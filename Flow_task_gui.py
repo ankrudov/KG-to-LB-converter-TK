@@ -1,26 +1,37 @@
 from tkinter import * 
 import tkinter as tk
 
-
+#window 
 window = tk.Tk()
-window.geometry("500x300")
-#add widget codes here
+window.title("Flow Hub Remote")
 
 #title widget
 title_main = tk.Label(
-    text="KG to LB converter",
+    text="Flow GUI",
     foreground = "white", #text color
     background = "black", #background color
     width = 20,
     height = 10
 )
 
-#buttons
+#canvas 
+canvas_1 = tk.Canvas(window,width=400,height=300)
+canvas_1.pack()
 
-b1 = Button(window, text="Calculate")
-b2 = Button(window, text="Clear")
+#entry box 
+entry_1 = tk.Entry(window)
+canvas_1.create_window(200,140,window=entry_1)
 
+
+#kg to lb converter
+def kg_to_lb():
+    user_input = entry_1.get()
+    label_1 = tk.Label(window,text= float(user_input)* 2.2046)
+    canvas_1.create_window(200,230,window=label_1)
+    
+calculate_btn = tk.Button(text="calculate",command=kg_to_lb)
+canvas_1.create_window(200,180,window=calculate_btn)
+    
+    
 title_main.pack() #adding the title to the window
-b1.pack(side=LEFT)
-b2.pack(side=LEFT)
 window.mainloop()
