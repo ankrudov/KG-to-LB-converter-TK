@@ -29,9 +29,15 @@ def kg_to_lb():
     label_1 = tk.Label(window,text= float(user_input)* 2.2046)
     canvas_1.create_window(200,230,window=label_1)
     
+def clear_txt():
+    entry_1.delete("0","end")
+        
+    
 calculate_btn = tk.Button(text="calculate",command=kg_to_lb)
+clear_btn = tk.Button(text="clear",command=clear_txt)
 canvas_1.create_window(200,180,window=calculate_btn)
     
     
 title_main.pack() #adding the title to the window
+clear_btn.pack()
 window.mainloop()
